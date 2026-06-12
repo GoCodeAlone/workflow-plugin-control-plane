@@ -1,0 +1,27 @@
+{
+  "name": "workflow-plugin-control-plane",
+  "version": "0.0.0",
+  "description": "Product-neutral Workflow control-plane descriptor, envelope, and registry contracts.",
+  "author": "GoCodeAlone",
+  "license": "MIT",
+  "type": "external",
+  "tier": "core",
+  "private": false,
+  "minEngineVersion": "0.80.1",
+  "keywords": [
+    "control-plane",
+    "descriptors",
+    "envelopes",
+    "registry",
+    "contracts"
+  ],
+  "homepage": "https://github.com/GoCodeAlone/workflow-plugin-control-plane",
+  "repository": "https://github.com/GoCodeAlone/workflow-plugin-control-plane",
+  "capabilities": {
+    "configProvider": false,
+    "moduleTypes": [],
+    "stepTypes": [],
+    "triggerTypes": []
+  },
+  "contracts": []
+}

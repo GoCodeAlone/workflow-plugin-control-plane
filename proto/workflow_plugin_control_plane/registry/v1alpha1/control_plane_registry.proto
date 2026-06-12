@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package workflow_plugin_control_plane.registry.v1alpha1;
+
+option go_package = "github.com/GoCodeAlone/workflow-plugin-control-plane/registry/pb;pb";
+
+message DescriptorRegistration {
+  string protocol_version = 1;
+  string descriptor_digest = 2;
+  string schema_digest = 3;
+  string plugin_id = 4;
+  string plugin_version = 5;
+  string plugin_package_digest = 6;
+  string signing_root_ref = 7;
+  string provenance_source = 8;
+  uint64 allowlist_epoch = 9;
+  string downgrade_floor_version = 10;
+  int64 revocation_fresh_until_unix_nano = 11;
+  int64 fetched_at_unix_nano = 12;
+  int64 validated_at_unix_nano = 13;
+  string parser_compatibility_version = 14;
+  uint64 trust_root_generation = 15;
+}
