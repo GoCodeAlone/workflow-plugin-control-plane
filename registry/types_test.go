@@ -23,6 +23,9 @@ func TestDescriptorRegistrationRejectsSkewAndStaleProvenance(t *testing.T) {
 		"network signing root": func(r *pb.DescriptorRegistration) {
 			r.SigningRootRef = "https://keys.example.test/root"
 		},
+		"ssh provenance": func(r *pb.DescriptorRegistration) {
+			r.ProvenanceSource = "ssh://git.example.test/repo"
+		},
 		"zero epoch": func(r *pb.DescriptorRegistration) {
 			r.AllowlistEpoch = 0
 		},

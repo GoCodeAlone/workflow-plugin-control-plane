@@ -3,6 +3,7 @@ package validate
 import (
 	"errors"
 	"fmt"
+	"net/url"
 	"regexp"
 	"strings"
 )
@@ -14,6 +15,20 @@ var (
 	refPattern    = regexp.MustCompile(`^[a-z][a-z0-9+.-]*://[A-Za-z0-9._~:/?#\[\]@!$&'()*+,;=%-]+$`)
 	digestPattern = regexp.MustCompile(`^sha256:[a-f0-9]{64}$`)
 )
+
+var hostScopedSchemes = map[string]struct{}{
+	"actionclass": {},
+	"auditclass":  {},
+	"authclass":   {},
+	"provenance":  {},
+	"render":      {},
+	"resource":    {},
+	"risk":        {},
+	"route":       {},
+	"severity":    {},
+	"template":    {},
+	"trustroot":   {},
+}
 
 func Protocol(version string) error {
 	if version != ProtocolVersion {
@@ -50,6 +65,13 @@ func Ref(field, value string) error {
 	}
 	if !refPattern.MatchString(value) {
 		return fmt.Errorf("%s must be a typed ref", field)
+	}
+	parsed, err := url.Parse(value)
+	if err != nil || parsed.Scheme == "" {
+		return fmt.Errorf("%s must be a typed ref", field)
+	}
+	if _, ok := hostScopedSchemes[parsed.Scheme]; !ok {
+		return fmt.Errorf("%s scheme %q is not a host-scoped control-plane ref", field, parsed.Scheme)
 	}
 	return nil
 }

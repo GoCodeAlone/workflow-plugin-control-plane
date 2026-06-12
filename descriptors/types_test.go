@@ -23,6 +23,9 @@ func TestRouteActionDescriptorRejectsAuthorityTransferPayloads(t *testing.T) {
 		"shell presentation": func(d *pb.RouteActionDescriptor) {
 			d.PresentationRef = "shell://rm-rf"
 		},
+		"ssh network presentation": func(d *pb.RouteActionDescriptor) {
+			d.PresentationRef = "ssh://example.test/admin"
+		},
 		"credential handoff": func(d *pb.RouteActionDescriptor) {
 			d.Admin.RenderRef = "secret://control-plane/admin"
 		},
