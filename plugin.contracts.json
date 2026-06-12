@@ -1,0 +1,75 @@
+{
+  "version": "1",
+  "descriptorSetRef": "descriptorsets/control_plane.binpb",
+  "contracts": [
+    {
+      "kind": "message",
+      "contractType": "control_plane.descriptors.v1alpha1",
+      "mode": "strict",
+      "protoPackage": "workflow_plugin_control_plane.descriptors.v1alpha1",
+      "messageNames": [
+        "workflow_plugin_control_plane.descriptors.v1alpha1.RouteActionDescriptor",
+        "workflow_plugin_control_plane.descriptors.v1alpha1.ProviderHandoffRef",
+        "workflow_plugin_control_plane.descriptors.v1alpha1.AdminContribution"
+      ],
+      "goImportPath": "github.com/GoCodeAlone/workflow-plugin-control-plane/descriptors/pb",
+      "schemaDigest": "sha256:aa889aa79d7e571b9bac757c1b41858a6140a02d6896fe221f041b8ced608842",
+      "protocolVersion": "control-plane.v1alpha1"
+    },
+    {
+      "kind": "message",
+      "contractType": "control_plane.envelopes.v1alpha1",
+      "mode": "strict",
+      "protoPackage": "workflow_plugin_control_plane.envelopes.v1alpha1",
+      "messageNames": [
+        "workflow_plugin_control_plane.envelopes.v1alpha1.ControlPlaneEnvelope",
+        "workflow_plugin_control_plane.envelopes.v1alpha1.RetentionMetadata"
+      ],
+      "goImportPath": "github.com/GoCodeAlone/workflow-plugin-control-plane/envelopes/pb",
+      "schemaDigest": "sha256:aa889aa79d7e571b9bac757c1b41858a6140a02d6896fe221f041b8ced608842",
+      "protocolVersion": "control-plane.v1alpha1"
+    },
+    {
+      "kind": "message",
+      "contractType": "control_plane.registry.v1alpha1",
+      "mode": "strict",
+      "protoPackage": "workflow_plugin_control_plane.registry.v1alpha1",
+      "messageNames": [
+        "workflow_plugin_control_plane.registry.v1alpha1.DescriptorRegistration"
+      ],
+      "goImportPath": "github.com/GoCodeAlone/workflow-plugin-control-plane/registry/pb",
+      "schemaDigest": "sha256:aa889aa79d7e571b9bac757c1b41858a6140a02d6896fe221f041b8ced608842",
+      "protocolVersion": "control-plane.v1alpha1"
+    }
+  ],
+  "protocolTypes": [
+    {
+      "name": "RouteActionDescriptor",
+      "wire": "protobuf",
+      "goType": "github.com/GoCodeAlone/workflow-plugin-control-plane/descriptors/pb.RouteActionDescriptor",
+      "protocolVersion": "control-plane.v1alpha1",
+      "produces": [
+        "host_rendered_admin_descriptors",
+        "provider_handoff_refs"
+      ]
+    },
+    {
+      "name": "ControlPlaneEnvelope",
+      "wire": "protobuf",
+      "goType": "github.com/GoCodeAlone/workflow-plugin-control-plane/envelopes/pb.ControlPlaneEnvelope",
+      "protocolVersion": "control-plane.v1alpha1",
+      "produces": [
+        "state_event_audit_envelopes"
+      ]
+    },
+    {
+      "name": "DescriptorRegistration",
+      "wire": "protobuf",
+      "goType": "github.com/GoCodeAlone/workflow-plugin-control-plane/registry/pb.DescriptorRegistration",
+      "protocolVersion": "control-plane.v1alpha1",
+      "produces": [
+        "descriptor_provenance"
+      ]
+    }
+  ]
+}

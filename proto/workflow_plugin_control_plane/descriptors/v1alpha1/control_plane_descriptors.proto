@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package workflow_plugin_control_plane.descriptors.v1alpha1;
+
+option go_package = "github.com/GoCodeAlone/workflow-plugin-control-plane/descriptors/pb;pb";
+
+message RouteActionDescriptor {
+  string protocol_version = 1;
+  string descriptor_id = 2;
+  string operation_id = 3;
+  string route_handle = 4;
+  string auth_class_ref = 5;
+  string audit_class_ref = 6;
+  string input_schema_digest = 7;
+  string output_schema_digest = 8;
+  ProviderHandoffRef provider_handoff = 9;
+  AdminContribution admin = 10;
+  string presentation_ref = 11;
+}
+
+message ProviderHandoffRef {
+  string provider_plugin_id = 1;
+  string provider_plugin_version = 2;
+  string capability_id = 3;
+  string capability_version = 4;
+  string input_schema_digest = 5;
+  string action_nonce = 6;
+  string idempotency_key = 7;
+}
+
+message AdminContribution {
+  string resource_ref = 1;
+  string action_class_ref = 2;
+  string risk_ref = 3;
+  string severity_ref = 4;
+  string permission_explanation_template_ref = 5;
+  string render_ref = 6;
+}

@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package workflow_plugin_control_plane.envelopes.v1alpha1;
+
+option go_package = "github.com/GoCodeAlone/workflow-plugin-control-plane/envelopes/pb;pb";
+
+message ControlPlaneEnvelope {
+  string protocol_version = 1;
+  string envelope_id = 2;
+  string kind = 3;
+  string tenant_handle = 4;
+  string actor_handle = 5;
+  string resource_handle = 6;
+  string correlation_id = 7;
+  int64 occurred_at_unix_nano = 8;
+  int64 observed_at_unix_nano = 9;
+  RetentionMetadata retention = 10;
+}
+
+message RetentionMetadata {
+  string redaction_state = 1;
+  int64 retention_expires_at_unix_nano = 2;
+  bool tombstoned = 3;
+  bool legal_erasure = 4;
+  string correlation_rekey_id = 5;
+}
