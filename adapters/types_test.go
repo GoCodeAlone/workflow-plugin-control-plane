@@ -40,7 +40,7 @@ func TestAdapterOptionsUseStableJSONNames(t *testing.T) {
 		t.Fatalf("marshal provider handoff options: %v", err)
 	}
 	wire := string(payload)
-	for _, want := range []string{`"provider_plugin_version"`, `"capability_id"`, `"input_schema_digest"`, `"action_nonce"`, `"idempotency_key"`} {
+	for _, want := range []string{`"provider_plugin_version"`, `"capability_id"`, `"capability_version"`, `"input_schema_digest"`, `"action_nonce"`, `"idempotency_key"`} {
 		if !strings.Contains(wire, want) {
 			t.Fatalf("wire JSON %s missing %s", wire, want)
 		}
@@ -70,6 +70,8 @@ func TestAdminContributionOptionsValidateAndNormalizeMethod(t *testing.T) {
 		opts.Method = method
 		if _, err := opts.Normalize(); err == nil {
 			t.Fatalf("expected unsupported method %q to be rejected", method)
+		} else if !strings.Contains(err.Error(), strings.TrimSpace(strings.ToUpper(method))) {
+			t.Fatalf("method error %q missing rejected value %q", err, method)
 		}
 	}
 }

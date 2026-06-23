@@ -89,7 +89,7 @@ func validateAdminContributionMethod(method string) error {
 	case "GET", "POST", "PUT", "PATCH", "DELETE":
 		return nil
 	default:
-		return fmt.Errorf("method must be one of GET, POST, PUT, PATCH, DELETE")
+		return fmt.Errorf("method %q must be one of GET, POST, PUT, PATCH, DELETE", method)
 	}
 }
 
