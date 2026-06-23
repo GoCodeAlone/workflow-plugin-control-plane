@@ -88,6 +88,24 @@
       "produces": [
         "provider_action_handoffs"
       ]
+    },
+    {
+      "name": "DiscoveryDocument",
+      "wire": "json",
+      "goType": "github.com/GoCodeAlone/workflow-plugin-control-plane/discovery.Document",
+      "protocolVersion": "control-plane.v1alpha1",
+      "produces": [
+        "signed_control_plane_discovery"
+      ]
+    },
+    {
+      "name": "SignatureEnvelope",
+      "wire": "json",
+      "goType": "github.com/GoCodeAlone/workflow-plugin-control-plane/discovery.SignatureEnvelope",
+      "protocolVersion": "control-plane.v1alpha1",
+      "produces": [
+        "signed_control_plane_discovery"
+      ]
     }
   ]
 }
