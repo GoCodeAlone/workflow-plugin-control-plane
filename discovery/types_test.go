@@ -30,6 +30,17 @@ func TestDocumentValidatesPublicDiscoveryShape(t *testing.T) {
 	}
 }
 
+func TestDocumentValidatesCallerProtocolVersion(t *testing.T) {
+	doc := validDocument()
+	doc.ProtocolVersion = "compute.v1alpha1"
+	if err := doc.ValidateForProtocol(time.Now().UTC(), "compute.v1alpha1"); err != nil {
+		t.Fatalf("discovery document should accept caller protocol version: %v", err)
+	}
+	if err := doc.Validate(time.Now().UTC()); err == nil {
+		t.Fatal("default discovery validation should still reject non-control-plane protocol version")
+	}
+}
+
 func TestDocumentRejectsInvalidData(t *testing.T) {
 	cases := map[string]func(*discovery.Document){
 		"wrong protocol": func(d *discovery.Document) {

@@ -35,8 +35,16 @@ func (d Document) SigningPayload() Document {
 }
 
 func (d Document) Validate(now time.Time) error {
+	return d.ValidateForProtocol(now, Version)
+}
+
+func (d Document) ValidateForProtocol(now time.Time, protocolVersion string) error {
 	var errs []error
-	errs = append(errs, validate.Protocol(d.ProtocolVersion))
+	if strings.TrimSpace(protocolVersion) == "" {
+		errs = append(errs, errors.New("expected protocol_version is required"))
+	} else if d.ProtocolVersion != protocolVersion {
+		errs = append(errs, fmt.Errorf("protocol_version must be %q", protocolVersion))
+	}
 	if strings.TrimSpace(d.ServerURL) == "" {
 		errs = append(errs, errors.New("server_url is required"))
 	} else if err := validateServerURL(d.ServerURL); err != nil {
