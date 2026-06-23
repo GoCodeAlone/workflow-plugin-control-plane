@@ -90,6 +90,33 @@
       ]
     },
     {
+      "name": "ProviderHandoffOptions",
+      "wire": "json",
+      "goType": "github.com/GoCodeAlone/workflow-plugin-control-plane/adapters.ProviderHandoffOptions",
+      "protocolVersion": "control-plane.v1alpha1",
+      "produces": [
+        "provider_handoff_refs"
+      ]
+    },
+    {
+      "name": "AdminContributionOptions",
+      "wire": "json",
+      "goType": "github.com/GoCodeAlone/workflow-plugin-control-plane/adapters.AdminContributionOptions",
+      "protocolVersion": "control-plane.v1alpha1",
+      "produces": [
+        "host_rendered_admin_descriptors"
+      ]
+    },
+    {
+      "name": "EnvelopeOptions",
+      "wire": "json",
+      "goType": "github.com/GoCodeAlone/workflow-plugin-control-plane/adapters.EnvelopeOptions",
+      "protocolVersion": "control-plane.v1alpha1",
+      "produces": [
+        "state_event_audit_envelopes"
+      ]
+    },
+    {
       "name": "DiscoveryDocument",
       "wire": "json",
       "goType": "github.com/GoCodeAlone/workflow-plugin-control-plane/discovery.Document",

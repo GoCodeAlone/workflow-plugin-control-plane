@@ -14,6 +14,8 @@ approve deployments, or run rollbacks.
   descriptor validators.
 - `actions`: provider action and config validators for product-neutral
   control-plane handoff payloads.
+- `adapters`: host-normalized adapter input validators for provider handoffs,
+  admin contributions, and control-plane envelopes.
 - `discovery`: signed control-plane discovery document validators for
   supervisor/server handoff bootstrap.
 - `envelopes`: state/event/audit envelope validators with opaque handle and
