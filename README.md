@@ -12,6 +12,8 @@ approve deployments, or run rollbacks.
 
 - `descriptors`: route/action, provider handoff, and admin contribution
   descriptor validators.
+- `actions`: provider action and config validators for product-neutral
+  control-plane handoff payloads.
 - `envelopes`: state/event/audit envelope validators with opaque handle and
   retention metadata checks.
 - `registry`: descriptor provenance, digest, allowlist epoch, downgrade floor,

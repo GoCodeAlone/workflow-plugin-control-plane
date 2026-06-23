@@ -70,6 +70,24 @@
       "produces": [
         "descriptor_provenance"
       ]
+    },
+    {
+      "name": "ProviderAction",
+      "wire": "json",
+      "goType": "github.com/GoCodeAlone/workflow-plugin-control-plane/actions.ProviderAction",
+      "protocolVersion": "control-plane.v1alpha1",
+      "produces": [
+        "provider_action_handoffs"
+      ]
+    },
+    {
+      "name": "ProviderConfig",
+      "wire": "json",
+      "goType": "github.com/GoCodeAlone/workflow-plugin-control-plane/actions.ProviderConfig",
+      "protocolVersion": "control-plane.v1alpha1",
+      "produces": [
+        "provider_action_handoffs"
+      ]
     }
   ]
 }
