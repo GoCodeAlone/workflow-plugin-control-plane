@@ -14,6 +14,8 @@ approve deployments, or run rollbacks.
   descriptor validators.
 - `actions`: provider action and config validators for product-neutral
   control-plane handoff payloads.
+- `discovery`: signed control-plane discovery document validators for
+  supervisor/server handoff bootstrap.
 - `envelopes`: state/event/audit envelope validators with opaque handle and
   retention metadata checks.
 - `registry`: descriptor provenance, digest, allowlist epoch, downgrade floor,
