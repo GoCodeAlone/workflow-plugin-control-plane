@@ -16,7 +16,7 @@ type SignatureEnvelope struct {
 	Algorithm string `json:"algorithm,omitempty"`
 	KeyID     string `json:"key_id,omitempty"`
 	Value     string `json:"value,omitempty"`
-	Verified  bool   `json:"verified,omitempty"`
+	Verified  bool   `json:"-"`
 }
 
 type Document struct {
@@ -27,6 +27,8 @@ type Document struct {
 	Signature       SignatureEnvelope `json:"signature"`
 }
 
+// SigningPayload preserves the empty signature object in JSON for compatibility
+// with existing workflow-compute discovery signatures.
 func (d Document) SigningPayload() Document {
 	d.Signature = SignatureEnvelope{}
 	return d
@@ -69,7 +71,7 @@ func validateServerURL(raw string) error {
 	if parsed.Host == "" {
 		return errors.New("host is required")
 	}
-	if parsed.RawQuery != "" || parsed.Fragment != "" {
+	if parsed.ForceQuery || parsed.RawQuery != "" || strings.Contains(strings.TrimSpace(raw), "#") {
 		return errors.New("must not contain query or fragment")
 	}
 	return nil
